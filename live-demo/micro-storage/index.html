@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" manifest="manifest.appcache">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title> Micro Storage </title>
+</head>
+<body>
+    <script src="js/micro-storage.mim.js" charset="utf-8"></script>
+    <h3><code>var table1 = microStorage('table1');</code></h3>
+    <h3><code>table1('name', 'John Smith');</code></h3>
+    <h3><code>var table2 = microStorage('table2');</code></h3>
+    <h3><code>table2('age', 20);</code></h3>
+    <h3><code>var table3 = microStorage('table3');</code></h3>
+    <h3><code>table3('hobby', ['table tennis', 'overwatch']);</code></h3>
+    <script type="text/javascript">
+        var table1 = microStorage('table1');
+        table1('name', 'John Smith');
+        var table2 = microStorage('table2');
+        table2('age', 20);
+        var table3 = microStorage('table3');
+        table3('hobby', ['table tennis', 'overwatch']);
+    </script>
+</body>
+</html>
