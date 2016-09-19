@@ -9,15 +9,24 @@
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title> Micro Storage </title>
+    <style media="screen">
+        .line {
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <script src="js/micro-storage.mim.js" charset="utf-8"></script>
-    <h3><code>var table1 = microStorage('table1');</code></h3>
-    <h3><code>table1('name', 'John Smith');</code></h3>
-    <h3><code>var table2 = microStorage('table2');</code></h3>
-    <h3><code>table2('age', 20);</code></h3>
-    <h3><code>var table3 = microStorage('table3');</code></h3>
-    <h3><code>table3('hobby', ['table tennis', 'overwatch']);</code></h3>
+    <script src="micro-storage.min.js" charset="utf-8"></script>
+    <h2><code>var table1 = microStorage('table1');</code></h2>
+    <h2><code>table1('name', 'John Smith');</code></h2>
+    <h2><code>var table2 = microStorage('table2');</code></h2>
+    <h2><code>table2('age', 20);</code></h2>
+    <h2><code>var table3 = microStorage('table3');</code></h2>
+    <h2><code>table3('hobby', ['table tennis', 'overwatch']);</code></h2>
+    <br>
+    <h2><code>table1('name'); // John Smith</code></h2>
+    <div class="line"></div>
+    <h2>Please open DevTools and try it out for yourself. 😇</h2>
     <script type="text/javascript">
         var table1 = microStorage('table1');
         table1('name', 'John Smith');
