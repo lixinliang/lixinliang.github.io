@@ -20,9 +20,11 @@
     <h2><code>var table2 = microStorage('table2');</code></h2>
     <h2><code>table2('age', 20);</code></h2>
     <h2><code>var table3 = microStorage('table3');</code></h2>
-    <h2><code>table3('hobby', ['table tennis', 'overwatch']);</code></h2>
+    <h2><code>table3('sport', ['table tennis', 'swim']);</code></h2>
+    <h2><code>table3('game', ['lol', 'overwatch']);</code></h2>
     <br>
     <h2><code>table1('name'); // John Smith</code></h2>
+    <h2><code>table2.list(); // ['age']</code></h2>
     <div class="line"></div>
     <h2>Please open DevTools and try it out for yourself. 😇</h2>
     <script type="text/javascript">
@@ -31,7 +33,8 @@
         var table2 = microStorage('table2');
         table2('age', 20);
         var table3 = microStorage('table3');
-        table3('hobby', ['table tennis', 'overwatch']);
+        table3('sport', ['table tennis', 'swim']);
+        table3('game', ['lol', 'overwatch']);
     </script>
 </body>
 </html>
