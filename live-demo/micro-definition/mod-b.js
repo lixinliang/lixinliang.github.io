@@ -1,4 +1,4 @@
 define('mod-b', function () {
-    console.log('i am mod-b');
+    console.log('mod-b is running, because mod-a needs me.');
     return 'mod-b';
 });

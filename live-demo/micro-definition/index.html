@@ -11,19 +11,56 @@
         .line {
             border-bottom: 1px solid #ccc;
         }
+        .file {
+            color: #98c379;
+        }
+        .comment {
+            color: #e06c75;
+        }
     </style>
 </head>
 <body>
+    <h2><pre><code>
+    --- <span class="file">mod-a.js</span> ---
+    <span class="comment">// Define a module with dependencies.</span>
+    <span class="comment">// The return value of the dependent module as arguments.</span>
+    define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
+        console.log('i am mod-a');
+        return 'mod-a,' + b + ',' + c;
+    });
+    </code></pre></h2>
+    <h2><pre><code>
+    --- <span class="file">index.html</span> ---
+    <span class="comment">// Do not forget to config the alias.</span>
+    <span class="comment">// Alias is use to control the module version and its path.</span>
+    define.alias({
+        'mod-a': function () {
+            return 'mod-a@1.0.0';
+        },
+        'mod-a@1.0.0': 'mod-a.js',
+        'mod-b': 'mod-b.js',
+        'mod-c': 'mod-c.js',
+    });
+    <span class="comment">// If you want to use module, do not pass any module id.</span>
+    define(['mod-a'], function ( result ) {
+        console.log('I get the value from mod-a >> ' + result);
+    });
+    </code></pre></h2>
+    <div class="line"></div>
+    <h2>Please open DevTools and try it out for yourself. 😇</h2>
     <script src="../micro-storage/micro-storage.min.js" charset="utf-8"></script>
     <script src="micro-definition.min.js" charset="utf-8"></script>
     <script type="text/javascript">
         define.alias({
-            'mod-a':'mod-a.js',
-            'mod-b':'mod-b.js',
-            'mod-c':'mod-c.js',
+            'mod-a': function () {
+                return 'mod-a@1.0.0';
+            },
+            'mod-a@1.0.0': 'mod-a.js',
+            'mod-b': 'mod-b.js',
+            'mod-c': 'mod-c.js',
         });
         define(['mod-a'], function ( result ) {
-            console.log('result >> ' + result);
+            console.log('I get the value from mod-a >> ' + result);
         });
     </script>
 </body>
