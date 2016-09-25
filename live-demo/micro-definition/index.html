@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title> Micro Definition </title>
+    <style media="screen">
+        .line {
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <script src="../micro-storage/micro-storage.min.js" charset="utf-8"></script>
+    <script src="micro-definition.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        define.alias({
+            'mod-a':'mod-a.js',
+            'mod-b':'mod-b.js',
+            'mod-c':'mod-c.js',
+        });
+        define(['mod-a'], function ( result ) {
+            console.log('result >> ' + result);
+        });
+    </script>
+</body>
+</html>
