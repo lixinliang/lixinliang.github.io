@@ -8,45 +8,48 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title> Micro Definition </title>
     <style media="screen">
-        .line {
+        .split-line {
             border-bottom: 1px solid #ccc;
-        }
-        .file {
-            color: #98c379;
-        }
-        .comment {
-            color: #e06c75;
         }
     </style>
 </head>
 <body>
-    <h2><pre><code>
-    --- <span class="file">mod-a.js</span> ---
-    <span class="comment">// Define a module with dependencies.</span>
-    <span class="comment">// The return value of the dependent module as arguments.</span>
-    define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
-        console.log('i am mod-a');
-        return 'mod-a,' + b + ',' + c;
-    });
-    </code></pre></h2>
-    <h2><pre><code>
-    --- <span class="file">index.html</span> ---
-    <span class="comment">// Do not forget to config the alias.</span>
-    <span class="comment">// Alias is use to control the module version and its path.</span>
-    define.alias({
-        'mod-a': function () {
-            return 'mod-a@1.0.0';
-        },
-        'mod-a@1.0.0': 'mod-a.js',
-        'mod-b': 'mod-b.js',
-        'mod-c': 'mod-c.js',
-    });
-    <span class="comment">// If you want to use module, do not pass any module id.</span>
-    define(['mod-a'], function ( result ) {
-        console.log('I get the value from mod-a >> ' + result);
-    });
-    </code></pre></h2>
-    <div class="line"></div>
+    <h2>
+        <pre class="javascript">
+            [mod-a.js]
+            <code>
+                // Define a module with dependencies.
+                // The return value of the dependent module as arguments.
+                define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
+                    console.log('i am mod-a');
+                    return 'mod-a,' + b + ',' + c;
+                });
+            </code>
+        </pre>
+    </h2>
+    <h2>
+        <pre class="javascript">
+            [index.html]
+            <code>
+                // Do not forget to config the alias.
+                // Alias is use to control the module version and its path.
+                define.alias({
+                    'mod-a': function () {
+                        return 'mod-a@1.0.0';
+                    },
+                    'mod-a@1.0.0': 'mod-a.js',
+                    'mod-b': 'mod-b.js',
+                    'mod-c': 'mod-c.js',
+                });
+
+                // If you want to use module, do not pass any module id.
+                define(['mod-a'], function ( result ) {
+                    console.log('I get the value from mod-a >> ' + result);
+                });
+            </code>
+        </pre>
+    </h2>
+    <div class="split-line"></div>
     <h2>Please open DevTools and try it out for yourself. 😇</h2>
     <script src="../micro-storage/micro-storage.min.js" charset="utf-8"></script>
     <script src="micro-definition.min.js" charset="utf-8"></script>
@@ -81,6 +84,17 @@
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-81465644-1', 'auto');
         ga('send', 'pageview');
+    </script>
+    <!-- highlight -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/javascript.min.js" charset="utf-8"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            [].forEach.call(document.querySelectorAll('pre'), function ( element ) {
+                hljs.highlightBlock(element);
+            });
+        }, false);
     </script>
 </body>
 </html>

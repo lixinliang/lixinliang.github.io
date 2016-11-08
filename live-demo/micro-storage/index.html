@@ -8,24 +8,30 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title> Micro Storage </title>
     <style media="screen">
-        .line {
+        .split-line {
             border-bottom: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
     <script src="micro-storage.min.js" charset="utf-8"></script>
-    <h2><code>var table1 = microStorage('table1');</code></h2>
-    <h2><code>table1('name', 'John Smith');</code></h2>
-    <h2><code>var table2 = microStorage('table2');</code></h2>
-    <h2><code>table2('age', 20);</code></h2>
-    <h2><code>var table3 = microStorage('table3');</code></h2>
-    <h2><code>table3('sport', ['table tennis', 'swim']);</code></h2>
-    <h2><code>table3('game', ['lol', 'overwatch']);</code></h2>
-    <br>
-    <h2><code>table1('name'); // John Smith</code></h2>
-    <h2><code>table2.list(); // ['age']</code></h2>
-    <div class="line"></div>
+    <h2>
+        <pre class="javascript">
+            <code>
+                var table1 = microStorage('table1');
+                table1('name', 'John Smith');
+                var table2 = microStorage('table2');
+                table2('age', 20);
+                var table3 = microStorage('table3');
+                table3('sport', ['table tennis', 'swim']);
+                table3('game', ['lol', 'overwatch']);
+
+                table1('name'); // John Smith
+                table2.list(); // ['age']
+            </code>
+        </pre>
+    </h2>
+    <div class="split-line"></div>
     <h2>Please open DevTools and try it out for yourself. 😇</h2>
     <script type="text/javascript">
         var table1 = microStorage('table1');
@@ -35,6 +41,9 @@
         var table3 = microStorage('table3');
         table3('sport', ['table tennis', 'swim']);
         table3('game', ['lol', 'overwatch']);
+
+        table1('name'); // John Smith
+        table2.list(); // ['age']
     </script>
     <!-- 百度统计 -->
     <script>
@@ -54,6 +63,15 @@
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-81465644-1', 'auto');
         ga('send', 'pageview');
+    </script>
+    <!-- highlight -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" charset="utf-8"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/languages/javascript.min.js" charset="utf-8"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            hljs.highlightBlock(document.querySelector('pre'));
+        }, false);
     </script>
 </body>
 </html>
