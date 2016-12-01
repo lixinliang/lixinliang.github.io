@@ -20,7 +20,7 @@
             <code>
                 // Define a module with dependencies.
                 // The return value of the dependent module as arguments.
-                define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
+                Define('mod-a', ['mod-b', 'mod-c'], function ( b, c ) {
                     console.log('i am mod-a');
                     return 'mod-a,' + b + ',' + c;
                 });
@@ -33,7 +33,7 @@
             <code>
                 // Do not forget to config the alias.
                 // Alias is use to control the module version and its path.
-                define.alias({
+                Define.alias({
                     'mod-a': function () {
                         return 'mod-a@1.0.0';
                     },
@@ -43,7 +43,7 @@
                 });
 
                 // If you want to use module, do not pass any module id.
-                define(['mod-a'], function ( result ) {
+                Define(['mod-a'], function ( result ) {
                     console.log('I get the value from mod-a >> ' + result);
                 });
             </code>
@@ -54,7 +54,7 @@
     <script src="../micro-storage/micro-storage.min.js" charset="utf-8"></script>
     <script src="micro-definition.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-        define.alias({
+        Define.alias({
             'mod-a': function () {
                 return 'mod-a@1.0.0';
             },
@@ -62,7 +62,7 @@
             'mod-b': 'mod-b.js',
             'mod-c': 'mod-c.js',
         });
-        define(['mod-a'], function ( result ) {
+        Define(['mod-a'], function ( result ) {
             console.log('I get the value from mod-a >> ' + result);
         });
     </script>
