@@ -1,0 +1,92 @@
+# Site settings
+title: LXL Blog
+SEOTitle: 李昕亮的博客 | LXL Blog
+header-img: img/bg/home.jpg
+email: 393464140@qq.com
+description: "敬业的搬砖工 | Front-End Engineer。"
+keyword: "李昕亮, lixinliang, 李昕亮的博客, LXL Blog, 博客, 个人网站, 互联网, 前端"
+url: "https://www.lixinliang.com"
+baseurl: ""
+
+# SNS settings
+RSS: true
+weibo_username:    1736489187
+zhihu_username:    qq393464140
+github_username:   lixinliang
+twitter_username:  qq393464140
+facebook_username: 100007530886495
+# linkedin_username:  firstname-lastname-idxxxx
+
+# Build settings
+highlighter: rouge
+permalink: pretty
+paginate: 10
+anchorjs: true
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - entry
+  - live-demo
+  - preview
+  - LICENSE
+  - package.json
+  - README.md
+  - webpack.config.js
+
+# Gems
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+# markdown: kramdown
+# kramdown:
+#   input: GFM                            # use Github Flavored Markdown !important
+
+# Disqus settings
+#disqus_username: _your_disqus_short_name_
+
+# Duoshuo settings
+# duoshuo_username: huxblog
+# Share component is depend on Comment so we can NOT use share only.
+# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+# Analytics settings
+# Baidu Analytics
+# ba_track_id: [your track id]
+
+# Google Analytics
+# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+# ga_domain: huangxuan.me
+
+# Sidebar settings
+# sidebar: true                           # whether or not using Sidebar.
+# sidebar-about-description: "写写代码，做做设计"
+# sidebar-avatar: /img/avatar-hux.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+
+# Featured Tags
+# featured-tags: true                     # whether or not using Feature-Tags
+# featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+# Friends
+# friends: [
+#     {
+#         title: "Su",
+#         href: "http://su.gallery/"
+#     },{
+#         title: "乱序",
+#         href: "http://mida.re/"
+#     },{
+#         title: "前端外刊评论",
+#         href: "http://qianduan.guru/"
+#     }
+# ]
+
+# Build settings
+# markdown: kramdown
+# theme: minima
