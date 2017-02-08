@@ -20,7 +20,7 @@ facebook_username: 100007530886495
 # Build settings
 highlighter: rouge
 permalink: pretty
-paginate: 10
+paginate: 4
 anchorjs: true
 exclude:
   - CNAME
@@ -28,7 +28,7 @@ exclude:
   - Gemfile.lock
   - node_modules
   - entry
-  - live-demo
+  # - live-demo
   - preview
   - LICENSE
   - package.json
