@@ -6,11 +6,10 @@ let fse = require('fs-extra');
 let moment = require('moment');
 let webpack = require('webpack');
 let autoprefixer = require('autoprefixer');
+let CopyWebpackPlugin = require('copy-webpack-plugin');
+let CleanWebpackPlugin = require('clean-webpack-plugin');
 let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
-const entry = {
-    index : path.join(__dirname, 'entry/index.js'),
-};
 const packageJson = require('./package.json');
 
 const alias = {};
@@ -27,8 +26,22 @@ const banner =
 @Author ${ packageJson.author.name }(${ packageJson.author.url })
 @Update ${ moment().format('YYYY-MM-DD h:mm:ss a') }`;
 
+const empty = () => {};
+const jquery = path.resolve('node_modules', 'jquery', 'dist');
+const bootstrap = path.resolve('node_modules', 'bootstrap', 'dist');
+const fontawesome = path.resolve('node_modules', 'font-awesome');
+
+function entry () {
+    fs.readdirSync(path.resolve('entry')).forEach(( filename ) => {
+        if (path.extname(filename) == '.js') {
+            this[`${ path.basename(filename, '.js') }.min`] = path.resolve('entry', filename);
+        }
+    });
+    return this;
+}
+
 module.exports = {
-    entry,
+    entry : entry.call({}),
     output : {
         path : './',
         filename : 'js/[name].js',
@@ -54,7 +67,7 @@ module.exports = {
             },
             {
                 test : /\.js$/,
-                exclude : path.join(__dirname, '../node_modules/'),
+                exclude : path.resolve('node_modules'),
                 loader : 'babel',
                 query : {
                     presets : ['es2015', 'stage-0'],
@@ -65,6 +78,37 @@ module.exports = {
         ],
     },
     plugins : [
+        process.argv.indexOf('--clean') == -1 ? empty : new CleanWebpackPlugin(['css', 'js'], { root : __dirname }),
+        process.argv.indexOf('--copy') == -1 ? empty : new CopyWebpackPlugin([
+            {
+                from : path.join(bootstrap, 'css', 'bootstrap.min.css'),
+                to : 'css/bootstrap.min.css',
+            },
+            {
+                from : path.join(bootstrap, 'css', 'bootstrap.min.css.map'),
+                to : 'css/bootstrap.min.css.map',
+            },
+            {
+                from : path.join(bootstrap, 'js', 'bootstrap.min.js'),
+                to : 'js/bootstrap.min.js',
+            },
+            {
+                from : path.join(bootstrap, 'fonts'),
+                to : 'fonts',
+            },
+            {
+                from : path.join(fontawesome, 'css', 'font-awesome.min.css'),
+                to : 'css/font-awesome.min.css',
+            },
+            {
+                from : path.join(fontawesome, 'fonts'),
+                to : 'fonts',
+            },
+            {
+                from : path.join(jquery, 'jquery.min.js'),
+                to : 'js/jquery.min.js',
+            },
+        ]),
         new webpack.optimize.UglifyJsPlugin({
             compress : {
                 warnings : false,
