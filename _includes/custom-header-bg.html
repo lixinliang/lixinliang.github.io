@@ -1,0 +1,12 @@
+<!-- Custom Header BG -->
+<div class="custom-header-bg" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')"></div>
+<script type="text/javascript">
+    (function ( elem ) {
+        var img = new Image;
+        elem.classList.add('has-effect');
+        img.onload = function () {
+            elem.classList.add('is-show');
+        };
+        img.src = '{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}';
+    })(document.querySelector('.custom-header-bg'));
+</script>
