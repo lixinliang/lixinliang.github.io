@@ -1,0 +1,16 @@
+.expand-postlist {
+    &.postlist-container {
+        .post-title,
+        .post-subtitle {
+            color: $color-primary;
+        }
+        .post-content-preview {
+            color: $color-minor;
+        }
+        a:hover > .post-title,
+        a:hover > .post-subtitle,
+        a:hover > .post-content-preview {
+            color: $color-link-hover;
+        }
+    }
+}
