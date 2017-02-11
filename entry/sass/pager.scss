@@ -1,0 +1,10 @@
+.expand-pager {
+    &.pager {
+        a {
+            color: $color-minor;
+            &:hover {
+                color: $color-link-hover;
+            }
+        }
+    }
+}
