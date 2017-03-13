@@ -1,0 +1,43 @@
+---
+layout:     post
+title:      "我是标题"
+subtitle:   "我是副标题"
+date:       2017-02-08 9:00:00 +0800
+author:     "lixinliang"
+header-img: "img/post/bg.jpg"
+catalog: true
+tags:
+    - 测试
+    - 测试2
+    - 测试3
+    - 测试4
+    - 测试5
+    - 测试6
+    - 测试7
+    - 测试8
+    - 测试9
+---
+
+> “Yeah It's on. ”
+
+## 前言
+
+我是内容。
+
+```html
+<div>html</div>
+```
+
+---
+
+```css
+body {
+    color: red;
+}
+```
+
+---
+
+```js
+const abc = () => 1;
+```
