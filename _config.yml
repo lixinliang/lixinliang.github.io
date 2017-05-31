@@ -29,7 +29,7 @@ exclude:
   - node_modules
   - entry
   # - live-demo
-  - preview
+  # - preview
   - LICENSE
   - package.json
   - README.md
