@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
     <title> 第二届全国中医馆发展论坛暨中医药开放生态大会 </title>
     <meta name="description" content="">
-    <script src="./assets/lego-loading.min.js"></script>
+    <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/lego-loading.min.js"></script>
     <style media="screen">
         body {
             background-color: #000;
@@ -34,11 +34,11 @@
             document.write('<style>.page { transform-origin: 50% 0%; transform: scale(' + (window.innerHeight / 1280).toFixed(2) + '); }</style>');
         }
     </script>
-    <link rel="stylesheet" href="./assets/swiper.min.css">
-    <link rel="stylesheet" href="./assets/animate.css">
-    <link rel="stylesheet" href="./css/main.css?2017-06-05-11">
-    <link rel="stylesheet" href="./css/main2.css?2017-06-05-11">
-    <link rel="stylesheet" href="./css/t1.css?2017-06-05-11">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/swiper.min.css">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/animate.css">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/main.css">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/main2.css">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/t1.css">
 </head>
 <body>
     <script>
@@ -159,8 +159,8 @@
                                     <div class="item-58"></div>
                                 </div>
                                 <div class="swiper-slide">
-                                    <div class="item-61"></div>
                                     <div class="item-60"></div>
+                                    <div class="item-61"></div>
                                     <div class="item-62"></div>
                                     <div class="item-63"></div>
                                     <div class="item-64"></div>
@@ -171,7 +171,6 @@
                                     <div class="item-69"></div>
                                     <div class="item-70"></div>
                                     <div class="item-71"></div>
-
                                 </div>
                             </div>
                              <div class="swiper-pagination"></div>
@@ -207,7 +206,9 @@
                 <div class="swiper-slide">
                     <div data-swiper-parallax="-5%" class="page page-8">
                         <div class="item item-48"></div>
-                        <div class="item item-73"><img src="./img/qrcode.jpg"></div>
+                        <div class="item item-73">
+                            <img src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/img/qrcode.jpg">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -259,52 +260,49 @@
             </div>
         </div>
     </div>
-    <audio src="./assets/bgm.m4a" type="audio/m4a" preload="preload" loop="loop"></audio>
-    <script src="./assets/swiper.min.js"></script>
-    <script src="./assets/zepto.min.js"></script>
-    <script src="./assets/bubble-hearts.min.js"></script>
+    <audio src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/bgm.m4a" type="audio/m4a" preload="preload" loop="loop"></audio>
+    <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/swiper.min.js"></script>
+    <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/zepto.min.js"></script>
+    <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/bubble-hearts.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <!-- <script src="./assets/zepto.touch.js"></script> -->
-    <script src ="./js/main.js?2017-06-05-11"></script>
+    <script src ="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/js/main.js"></script>
     <script type="text/javascript">
-        wx.config({
-            // appId: msg.appId,
-            // timestamp: msg.timestamp,
-            // nonceStr: msg.nonceStr,
-            // signature: msg.signature,
-            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
-        });
-        wx.ready(function () {
-            var share_title = document.title;
-            var share_desc = '诚挚邀请：中医开放生态，未来已来。';
-            var share_link = location.href;
-            var share_img = './img/share.png';
-            //分享到朋友圈
-            wx.onMenuShareTimeline({
-                title: share_title, // 分享标题
-                link: share_link, // 分享链接
-                imgUrl: share_img, // 分享图标
-                success: function () {
-                    // self.defaults.success_callback();
+        $(function () {
+            var url = 'http://video.zanwh.com/shoun/info/wxInfo!getWxInfo';
+            $.ajax({
+                url: url,
+                data: {
+                    url: location.href,
                 },
-                cancel: function () {
-                    // self.defaults.cancel_callback();
-                }
-            });
-            //分享给朋友
-            wx.onMenuShareAppMessage({
-                title: share_title, // 分享标题
-                desc: share_desc, // 分享描述
-                link: share_link, // 分享链接
-                imgUrl: share_img, // 分享图标
-                type: '', // 分享类型,music、video或link，不填默认为link
-                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                success: function () {
-                    // self.defaults.success_callback();
+                success : function ( response ) {
+                    var result = JSON.parse(response);
+                    wx.config({
+                        appId: result.appId,
+                        nonceStr: result.nonceStr,
+                        signature: result.signature,
+                        timestamp: result.timestamp,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+                    });
+                    wx.ready(function () {
+                        var share_title = document.title;
+                        var share_desc = '诚挚邀请：中医开放生态，未来已来。';
+                        var share_link = location.href;
+                        var share_img = 'http://www.lixinliang.com/preview/tcm-meeting-invitation/v10/img/share.png';
+                        wx.onMenuShareTimeline({
+                            title: share_title,
+                            link: share_link,
+                            imgUrl: share_img,
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: share_title,
+                            desc: share_desc,
+                            link: share_link,
+                            imgUrl: share_img,
+                            type: '',
+                            dataUrl: '',
+                        });
+                    });
                 },
-                cancel: function () {
-                    // self.defaults.cancel_callback();
-                }
             });
         });
     </script>
