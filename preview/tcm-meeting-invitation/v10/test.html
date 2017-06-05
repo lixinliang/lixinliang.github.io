@@ -8,10 +8,8 @@
     <meta name="description" content="">
 </head>
 <body>
-    <div id="app">
-
-    </div>
-    <script src="http://172.26.128.101:3001/assets/zepto.min.js"></script>
+    <div id="app"></div>
+    <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/zepto.min.js"></script>
     <script type="text/javascript">
         $(function () {
             var url = 'http://video.zanwh.com/shoun/info/wxInfo!getWxInfo';
@@ -28,6 +26,32 @@
                     console.log(result.nonceStr);
                     console.log(result.signature);
                     console.log(result.timestamp);
+                    wx.config({
+                        appId: result.appId,
+                        nonceStr: result.nonceStr,
+                        signature: result.signature,
+                        timestamp: result.timestamp,
+                        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
+                    });
+                    wx.ready(function () {
+                        var share_title = 'share_title';
+                        var share_desc = 'share_desc';
+                        var share_link = location.href;
+                        var share_img = 'http://www.lixinliang.com/preview/tcm-meeting-invitation/v10/img/share.png';
+                        wx.onMenuShareTimeline({
+                            title: share_title,
+                            link: share_link,
+                            imgUrl: share_img,
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: share_title,
+                            desc: share_desc,
+                            link: share_link,
+                            imgUrl: share_img,
+                            type: '',
+                            dataUrl: '',
+                        });
+                    });
                 },
             });
         });
