@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=720, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+    <title> test </title>
+    <meta name="description" content="">
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script src="http://172.26.128.101:3001/assets/zepto.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var url = 'http://video.zanwh.com/shoun/info/wxInfo!getWxInfo';
+            $.ajax({
+                url: url,
+                // type: 'default GET (Other values: POST)',
+                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+                data: {
+                    url: location.href,
+                },
+                success : function( response ) {
+                    var result = JSON.parse(response);
+                    console.log(result.appId);
+                    console.log(result.nonceStr);
+                    console.log(result.signature);
+                    console.log(result.timestamp);
+                },
+            });
+        });
+    </script>
+</body>
+</html>
