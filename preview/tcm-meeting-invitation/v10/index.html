@@ -289,8 +289,8 @@
                         jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
                     });
                     wx.ready(function () {
-                        var share_title = 'share_title';
-                        var share_desc = 'share_desc';
+                        var share_title = document.title;
+                        var share_desc = '诚挚邀请：中医开放生态，未来已来。';
                         var share_link = location.href;
                         var share_img = 'http://www.lixinliang.com/preview/tcm-meeting-invitation/v10/img/share.png';
                         wx.onMenuShareTimeline({
