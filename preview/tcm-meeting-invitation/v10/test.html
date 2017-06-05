@@ -6,11 +6,6 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
     <title> test </title>
     <meta name="description" content="">
-    <style type="text/css">
-        #app p {
-            font-size: 32px;
-        }
-    </style>
 </head>
 <body>
     <div id="app"></div>
@@ -24,8 +19,6 @@
             }
             $.ajax({
                 url: url,
-                // type: 'default GET (Other values: POST)',
-                // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
                 data: {
                     url: decodeURIComponent(location.href),
                 },
