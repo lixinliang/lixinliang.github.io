@@ -36,9 +36,9 @@
     </script>
     <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/swiper.min.css">
     <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/animate.css">
-    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/main.css?2017-06-05-15">
-    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/main2.css?2017-06-05-15">
-    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/t1.css?2017-06-05-15">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/main.css?2017-06-05-16">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/main2.css?2017-06-05-16">
+    <link rel="stylesheet" href="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/css/t1.css?2017-06-05-16">
 </head>
 <body>
     <img src="./img/flower.png" class="hide" id="flower">
@@ -266,22 +266,23 @@
     <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/zepto.min.js"></script>
     <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/bubble-hearts.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script src ="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/js/main.js?2017-06-05-15"></script>
+    <script src ="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/js/main.js?2017-06-05-16"></script>
     <script type="text/javascript">
         $(function () {
             var url = 'http://video.zanwh.com/shoun/info/wxInfo!getWxInfo';
             $.ajax({
                 url: url,
                 data: {
-                    url: location.href,
+                    url: decodeURIComponent(location.href),
                 },
-                success : function ( response ) {
+                success : function( response ) {
                     var result = JSON.parse(response);
+                    var info = result.inf;
                     wx.config({
-                        appId: result.appId,
-                        nonceStr: result.nonceStr,
-                        signature: result.signature,
-                        timestamp: result.timestamp,
+                        appId: info.appId,
+                        nonceStr: info.nonceStr,
+                        signature: info.signature,
+                        timestamp: info.timestamp,
                         jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
                     });
                     wx.ready(function () {

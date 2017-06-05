@@ -6,31 +6,41 @@
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
     <title> test </title>
     <meta name="description" content="">
+    <style type="text/css">
+        #app p {
+            font-size: 32px;
+        }
+    </style>
 </head>
 <body>
     <div id="app"></div>
     <script src="//www.lixinliang.com/preview/tcm-meeting-invitation/v10/assets/zepto.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script type="text/javascript">
         $(function () {
             var url = 'http://video.zanwh.com/shoun/info/wxInfo!getWxInfo';
+            var log = function(label, message) {
+                $('<p>').html(label + ': ' + message).appendTo($('#app'));
+            }
             $.ajax({
                 url: url,
                 // type: 'default GET (Other values: POST)',
                 // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
                 data: {
-                    url: location.href,
+                    url: decodeURIComponent(location.href),
                 },
                 success : function( response ) {
                     var result = JSON.parse(response);
-                    console.log(result.appId);
-                    console.log(result.nonceStr);
-                    console.log(result.signature);
-                    console.log(result.timestamp);
+                    var info = result.inf;
+                    log('appId', info.appId);
+                    log('nonceStr', info.nonceStr);
+                    log('signature', info.signature);
+                    log('timestamp', info.timestamp);
                     wx.config({
-                        appId: result.appId,
-                        nonceStr: result.nonceStr,
-                        signature: result.signature,
-                        timestamp: result.timestamp,
+                        appId: info.appId,
+                        nonceStr: info.nonceStr,
+                        signature: info.signature,
+                        timestamp: info.timestamp,
                         jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage']
                     });
                     wx.ready(function () {
