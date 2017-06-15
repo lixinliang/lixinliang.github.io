@@ -7,20 +7,50 @@
     </head>
     <style type="text/css">
         body {
-            font-size: 40px;
-        }
-        ul {
-
+            padding-top: 40px;
         }
         li {
+            font-size: 40px;
             border-bottom: 1px solid #ececec;
+        }
+        button{
+            font-size: 40px;
+            display: block;
+            width: 100%;
+
         }
     </style>
     <body ontouchstart="">
-        <button> start </button>
+        <button>start</button>
         <ul></ul>
         <script type="text/javascript">
-            document.querySelector('button').addEventListener('click', function () {
+            var wpid;
+            document.querySelector('button').addEventListener('click', function ( event ) {
+                var start = event.target.innerHTML == 'start';
+                if (start) {
+                    event.target.innerHTML = 'stop';
+                    if (navigator.geolocation) {
+                        wpid = navigator.geolocation.watchPosition(
+                            function success () {
+                                log('success', arguments);
+                            },
+                            function error () {
+                                log('error', arguments);
+                            },
+                            {
+                              enableHighAccuracy : true,
+                              maximumAge : 30000,
+                              timeout : 27000,
+                            }
+                        );
+                    } else {
+                        log('not support geolocation.');
+                    }
+                } else {
+                    event.target.innerHTML = 'start';
+                    navigator.geolocation.clearWatch(wpid);
+                    document.querySelector('ul').innerHTML = '';
+                }
                 function log () {
                     var ul = document.querySelector('ul');
                     var arr = [].slice.call(arguments);
@@ -33,23 +63,6 @@
                         }
                         ul.appendChild(li);
                     });
-                }
-                if (navigator.geolocation) {
-                    navigator.geolocation.watchPosition(
-                        function success () {
-                            log('success', arguments);
-                        },
-                        function error () {
-                            log('error', arguments);
-                        },
-                        {
-                          enableHighAccuracy : true,
-                          maximumAge : 30000,
-                          timeout : 27000,
-                        }
-                    );
-                } else {
-                    log('not support geolocation!');
                 }
             }, false);
         </script>
