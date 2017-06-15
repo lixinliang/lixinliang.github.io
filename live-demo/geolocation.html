@@ -31,8 +31,17 @@
                     event.target.innerHTML = 'stop';
                     if (navigator.geolocation) {
                         wpid = navigator.geolocation.watchPosition(
-                            function success () {
+                            function success ( position ) {
                                 log('success', arguments);
+                                var timestamp = position.timestamp;
+                                var coords = position.coords;
+                                log('timestamp', timestamp);
+                                log('longitude', coords.longitude);
+                                log('latitude', coords.latitude);
+                                log('accuracy', coords.accuracy);
+                                log('speed', coords.speed);
+                                log('altitude', coords.altitude);
+                                log('altitudeAccuracy', coords.altitudeAccuracy);
                             },
                             function error () {
                                 log('error', arguments);
