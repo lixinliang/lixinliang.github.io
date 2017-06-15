@@ -6,47 +6,52 @@
         <title> Geolocation </title>
     </head>
     <style type="text/css">
+        body {
+            font-size: 40px;
+        }
         ul {
 
         }
         li {
-            font-size: 40px;
             border-bottom: 1px solid #ececec;
         }
     </style>
     <body ontouchstart="">
+        <button> start </button>
         <ul></ul>
         <script type="text/javascript">
-            function log () {
-                var ul = document.querySelector('ul');
-                var arr = [].slice.call(arguments);
-                arr.forEach(function ( msg ) {
-                    var li = document.createElement('li');
-                    try {
-                        li.innerHTML = JSON.stringify({ msg : msg });
-                    } catch (e) {
-                        li.innerHTML = msg;
-                    }
-                    ul.appendChild(li);
-                });
-            }
-            if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(
-                    function success () {
-                        log('success', arguments);
-                    },
-                    function error () {
-                        log('error', arguments);
-                    },
-                    {
-                      enableHighAccuracy : true,
-                      maximumAge : 30000,
-                      timeout : 27000,
-                    }
-                );
-            } else {
-                log('not support geolocation!');
-            }
+            document.querySelector('button').addEventListener('click', function () {
+                function log () {
+                    var ul = document.querySelector('ul');
+                    var arr = [].slice.call(arguments);
+                    arr.forEach(function ( msg ) {
+                        var li = document.createElement('li');
+                        try {
+                            li.innerHTML = JSON.stringify({ msg : msg });
+                        } catch (e) {
+                            li.innerHTML = msg;
+                        }
+                        ul.appendChild(li);
+                    });
+                }
+                if (navigator.geolocation) {
+                    navigator.geolocation.watchPosition(
+                        function success () {
+                            log('success', arguments);
+                        },
+                        function error () {
+                            log('error', arguments);
+                        },
+                        {
+                          enableHighAccuracy : true,
+                          maximumAge : 30000,
+                          timeout : 27000,
+                        }
+                    );
+                } else {
+                    log('not support geolocation!');
+                }
+            }, false);
         </script>
     </body>
 </html>
