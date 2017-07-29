@@ -1,0 +1,14 @@
+$color-main: #ec407a;
+
+.top {
+    width: 0;
+    transition: width 2s linear;
+}
+
+.profile {
+    img {
+        &:hover {
+            box-shadow: 0 0 100px -5px $color-main;
+        }
+    }
+}
