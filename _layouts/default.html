@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
 {% include head.html %}
 
 <body class="preload">
     <div class="top"></div>
     <div class="profile" style="background-image: url({{ site.background }});">
-        <img src="https://avatars3.githubusercontent.com/u/9375027?v=4&s=460" class="img-circle">
-        <h3>{{ site.name }}</h3>
-        <p>{{ site.description }}</p>
+        <a href="{{ baseurl }}/">
+            <img src="{{ site.avatar }}" class="img-circle">
+        </a>
+        <h3><a href="{{ baseurl }}/">{{ site.author }}</a></h3>
+        <p>{{ site.introduce }}</p>
         <ul class="social">
             {% if site.github %}
             <a type="button" href="http://github.com/{{ site.github }}">
                 <i class="fa fa-github"></i>
             </a>
-            {% endif %} {% if site.twitter %}
+            {% endif %}
+            {% if site.twitter %}
             <a type="button" href="http://twitter.com/{{ site.twitter }}">
                 <i class="fa fa-twitter"></i>
             </a>
-            {% endif %} {% if site.linkedin %}
+            {% endif %}
+            {% if site.linkedin %}
             <a type="button" href="http://linkedin.com/in/{{ site.linkedin }}">
                 <i class="fa fa-linkedin"></i>
             </a>
-            {% endif %} {% if site.pinterest %}
+            {% endif %}
+            {% if site.pinterest %}
             <a type="button" href="http://pinterest.com/{{ site.pinterest }}">
                 <i class="fa fa-pinterest"></i>
             </a>
-            {% endif %} {% if site.facebook %}
+            {% endif %}
+            {% if site.facebook %}
             <a type="button" href="http://facebook.com/{{ site.facebook }}">
                 <i class="fa fa-facebook"></i>
+            </a>
+            {% endif %}
+            {% if site.weibo %}
+            <a type="button" href="http://weibo.com/{{ site.weibo }}">
+                <i class="fa fa-weibo"></i>
             </a>
             {% endif %}
         </ul>
@@ -35,10 +46,11 @@
     <div class="posts">
         {{ content }}
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.remove('preload');
+        }, false);
+    </script>
+    {% include footer.html %}
 </body>
-<script type="text/javascript">
-    window.onload = function(){
-        document.getElementsByTagName("BODY")[0].classList.remove("preload");
-    }
-</script>
 </html>
