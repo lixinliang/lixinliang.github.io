@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+  <title> RESUME </title>
+  <link rel="stylesheet" href="https://unpkg.com/docute@3/dist/docute.css">
+  <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./font/consolas/font.css">
+  <style media="screen">
+    a:not([href^="#"])::before {
+      content: "\f0c1";
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://unpkg.com/docute@3/dist/docute.js"></script>
+  <script>
+  const langs = [
+    { title: 'English', path: 'en/' },
+    { title: '简体中文', path: 'zh/' },
+  ]
+  docute.init({
+    tocVisibleDepth: 3,
+    home: 'en/README.md',
+    twitter: 'qq393464140',
+    repo: 'lixinliang/resume',
+    nav: {
+      default: [
+        {
+          title: 'Languages', type: 'dropdown', items: langs
+        }
+      ],
+      'zh-Hans': [
+        {
+          title: '选择语言', type: 'dropdown', items: langs
+        }
+      ],
+    },
+  })
+  </script>
+</body>
+</html>
