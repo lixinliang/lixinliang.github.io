@@ -29,8 +29,8 @@ markdown:           kramdown
 nav:
   - name:           "About"
     href:           "/about"
-  # - name:           "Resume"
-    # href:           "/resume"
+  - name:           "Resume"
+    href:           "/resume"
 
 sass:
   style:            :compressed
