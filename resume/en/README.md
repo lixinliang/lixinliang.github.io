@@ -100,29 +100,3 @@ Worked at Guangzhou Hua Network Technology Co. Ltd. (YY Inc. / BIGO LIVE) as a F
     * Responsive web design with 2 size, wide and narrow.
     * Support best quality icons for high DPI screens.
     * Use Page Visibility API to improve user experience.
-
-### 2016/03
-
-Stepan 黄士旗
-
-### 2016/05
-
-mike smith 小倩
-
-### 2016/12
-
-Andrey Sitnik
-
-### 2017/05
-
-https://www.google.com/patents/CN106681767A?cl=en
-
-https://www.google.com/patents/CN106681767A?cl=zh&hl=zh-CN
-
----
-
-我的分享 galgame es6 promise legox auto-test lrkj
-
-http://www.lixinliang.com/live-demo/yy-bear/
-
-年度总结
