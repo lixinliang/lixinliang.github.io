@@ -11,7 +11,6 @@
   <style media="screen">
     a:not([href^="#"])::before {
       content: "\f0c1";
-      display: inline-block;
       font: normal normal normal 14px/1 FontAwesome;
       font-size: inherit;
       text-rendering: auto;
@@ -19,19 +18,164 @@
       -moz-osx-font-smoothing: grayscale;
       letter-spacing: 3px;
     }
+    img {
+      display: none;
+    }
+    img[alt="avatar"] {
+      border-radius: 50%;
+    }
+    [lang] {
+      display: none;
+    }
+    #app [lang] + * {
+      margin-top: 0;
+    }
+    [data-action="view-picture"]::before {
+      content: "view picture";
+    }
+    [lang="zh"] ~ [data-action="view-picture"]::before {
+      content: "查看图片";
+    }
+    label {
+      top: -15px;
+      color: #999;
+      padding: 0 3px;
+      cursor: pointer;
+      font-size: 12px;
+      overflow: hidden;
+      font-style: normal;
+      position: relative;
+      border-radius: 3px;
+      display: inline-block;
+      vertical-align: bottom;
+      border: 1px solid currentColor;
+    }
+    #timeline- label {
+      top: -6px;
+    }
+    label::before {
+      content: attr(for);
+    }
+    [lang="zh"] ~ * label[for="reset"]::before {
+      content: "重置";
+    }
+    #reset:checked ~ #app [for="reset"] {
+      display: none;
+    }
+    #timeline- label:not([for="reset"]) {
+      display: none;
+      pointer-events: none;
+    }
+    input[type="radio"] {
+      opacity: 0;
+      z-index: -1;
+      position: absolute;
+    }
+    input[type="radio"]:not(#reset):checked ~ #app #timeline- ~ * {
+      display: none;
+    }
+    body {
+      overflow: hidden;
+      /* hack for the scroll bug */
+    }
+    [lang="zh"] ~ #timeline- {
+        font-size: 0;
+        padding-bottom: 7.2px;
+    }
+    [lang="zh"] ~ #timeline- label {
+        margin-left: 5px;
+    }
+    [lang="zh"] ~ #timeline- .anchor {
+        line-height: 30px;
+    }
+    [lang="zh"] ~ #timeline-::before {
+        content: "时间线";
+        height: 30px;
+        font-size: 24px;
+        line-height: 30px;
+        font-weight: 600;
+        vertical-align: top;
+        display: inline-block;
+    }
+    a[href="#/zh/?id=timeline-"] {
+        font-size: 0;
+    }
+    a[href="#/zh/?id=timeline-"]::before {
+        font-size: 14px;
+        content: "时间线";
+    }
+  </style>
+  <style media="print">
+    img,
+    input,
+    button,
+    .header,
+    .sidebar,
+    .sidebar-toggle {
+      display: none;
+    }
+    img[alt="avatar"] {
+      display: block;
+    }
+    .content {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .content-wrap {
+      overflow: visible;
+    }
   </style>
 </head>
 <body>
+  <script>
+  [
+    ['hobby', '业余', '#e34c26'],// HTML
+    ['patent', '专利', '#563d7c'],// CSS
+    ['career', '工作', '#ffac45'],// Swift
+    ['education', '教育', '#3572A5'],// Python
+    ['conference', '会议', '#4F5D95'],// PHP
+    ['competition', '比赛', '#b07219'],// Java
+    ['presentation', '演讲', '#2b7489'],// TypeScript
+].forEach(function ( item ) {
+    const tag = item[0];
+    const zh = item[1];
+    const color = item[2];
+    const div = document.createElement('div');
+    [
+        `<style>[lang="zh"] ~ [for="${ tag }"]::before {content:"${ zh }"}</style>`,
+        `<style>[lang="zh"] ~ * [for="${ tag }"]::before {content:"${ zh }"}</style>`,
+        `<style>[for="${ tag }"] {color:${ color }}</style>`,
+        `<style>[for="${ tag }"]:hover {color:#fff;border-color:${ color };background-color:${ color }}</style>`,
+        `<style>#${ tag }:checked ~ #app #timeline- {color:${ color }}</style>`,
+        `<style>#${ tag }:checked ~ #app #timeline- [for="${ tag }"] {display: inline-block}</style>`,
+        `<style>#${ tag }:checked ~ #reset + #app #timeline- ~ label {display: none}</style>`,
+    ].concat(
+        Array.apply(null, { length: 10 }).map(function ( value, index ) {
+            const length = index + 1;
+            const exclude = Array.apply(null, { length: length }).map(function () {
+                return `*:not([data-line])`;
+            }).join('+');
+            return `<style>#${ tag }:checked ~ #app #timeline- ~ [data-line="${ tag }"] + ${ exclude } {display:block}</style>`;
+        })
+    ).forEach(function ( style ) {
+        div.innerHTML = style;
+        document.head.appendChild(div.firstElementChild);
+    });
+    div.innerHTML = `<input type="radio" id="${ tag }" name="filter">`;
+    document.body.appendChild(div.firstElementChild);
+  });
+  </script>
+  <input type="radio" id="reset" name="filter" checked>
   <div id="app"></div>
   <script src="https://unpkg.com/docute@3/dist/docute.js"></script>
   <script>
   const langs = [
-    { title: 'English', path: 'en/' },
-    { title: '简体中文', path: 'zh/' },
+    { title: 'English', path: '/en/' },
+    { title: '简体中文', path: '/zh/' },
   ]
   docute.init({
     tocVisibleDepth: 3,
-    home: 'en/README.md',
+    home: '/en/README.md',
     twitter: 'qq393464140',
     repo: 'lixinliang/resume',
     nav: {
@@ -47,6 +191,16 @@
       ],
     },
   })
+  </script>
+  <script>
+  document.addEventListener('click', function ( event ) {
+      const target = event.target;
+      if (event.isTrusted && target.dataset.action == 'view-picture') {
+          target.nextElementSibling.querySelector('img').style.display = 'block';
+          target.parentNode.removeChild(target);
+          return;
+      }
+  }, false);
   </script>
 </body>
 </html>
