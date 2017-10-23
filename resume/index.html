@@ -71,8 +71,12 @@
       z-index: -1;
       position: absolute;
     }
-    input[type="radio"]:not(#reset):checked ~ #app #timeline- ~ * {
+    input[type="radio"]:not(#reset):checked ~ #app .content > * {
       display: none;
+    }
+    input[type="radio"]:not(#reset):checked ~ #app #timeline- {
+      display: block;
+      margin-top: 0;
     }
     body {
       overflow: hidden;
@@ -108,6 +112,7 @@
   <style media="print">
     img,
     input,
+    label,
     button,
     .header,
     .sidebar,
