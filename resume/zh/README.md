@@ -98,13 +98,13 @@
 入职于，广州飞卓科汇信息科技有限公司，EBS 研发组，前端工程师。http://www.fsll.cn
 
 * 新华财经社官网。http://sc.xfafinance.com
-    * Two develop members in total.
-    * Using CMS System with PHP.
+    * 两位开发者之一。
+    * 使用 PHP 后台发布器生成静态 HTML。
 
 * 金银通 APP。
-    * Two develop members in total.
-    * Using Phonegap to build App.
-    * Zepto.
+    * 两位开发者之一。
+    * 使用 Phonegap 构建跨平台应用。
+    * Zepto。
 
 <p data-line="education"></p>
 ### 2014/06
@@ -121,13 +121,13 @@
 LegoX 团队成员之一。https://legox.org
 
 * 2016年，多玩首页。http://www.duowan.com/s/2016.html
-    * Responsive web design with 2 size, wide and narrow.
-    * Support best quality icons for high DPI screens.
-    * Use Page Visibility API to improve user experience.
+    * 适配宽屏与窄屏，包括 iPad。
+    * 高分辨率显示器下更清晰。
+    * 使用 Page Visibility API 提高用户体验。
 
 * 移动 OA APP。https://oaapp.hiido.com/install
-    * Vue 2.x family.
-    * Hybrid develop with LEGO-SDK. https://lego-sdk.github.io/docs/api
+    * 使用 Vue 2.x 全家桶。
+    * 使用 LEGO-SDK 进行混合式开发。https://lego-sdk.github.io/docs/api
 
 <p data-line="hobby"></p>
 ### 2015/05
