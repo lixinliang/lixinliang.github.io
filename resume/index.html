@@ -109,6 +109,22 @@
         font-size: 14px;
         content: "时间线";
     }
+    .sidebar-headings .sidebar-heading .sidebar-heading-anchor[href*="20"] {
+        display: none;
+    }
+    [data-filter]::before {
+        content: "\f0b0";
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: 10px;
+        color: #0366d6;
+    }
+    [data-filter] label {
+        top: 0;
+    }
   </style>
   <style media="print">
     img,
@@ -206,6 +222,9 @@
           target.parentNode.removeChild(target);
           return;
       }
+  }, false);
+  document.querySelector('#reset').addEventListener('change', function () {
+      document.querySelector('a[href*=timeline]').click();
   }, false);
   </script>
 </body>
