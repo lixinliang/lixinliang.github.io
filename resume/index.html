@@ -138,6 +138,12 @@
     }
     img[alt="avatar"] {
       display: block;
+      display: block;
+      position: absolute;
+      right: 0;
+    }
+    [lang] + h2 + p {
+      display: none;
     }
     .content {
       margin-top: 0;
@@ -145,6 +151,24 @@
     }
     .content-wrap {
       overflow: visible;
+    }
+    .markdown-body h2, .markdown-body h3 {
+      margin: 10px 0;
+    }
+    .markdown-body p {
+      display: inline;
+    }
+    .markdown-body ul {
+      display: inline;
+      padding-left: 0;
+    }
+    .markdown-body p::before {
+      content: "";
+      display: block;
+      height: 1px;
+    }
+    .markdown-body ul li {
+      display: inline;
     }
   </style>
 </head>
