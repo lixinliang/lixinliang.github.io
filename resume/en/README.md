@@ -26,7 +26,7 @@ Education:
 
 Experience:
 
-* __3 years Front-End Engineer__
+* __4 years Front-End Engineer__
 
 ## Summary
 
